@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "badge": "Eclipse • August 12, 2026",
+    "alertSuccess": "Astro-Pass generated successfully! You are now registered.",
+    "alertError": "Error registering data:"
+  },
+  "header": {
+    "title": "QUINTANARAYA",
+    "subtitle": "ECLIPSE"
+  },
+  "info": {
+    "title1": "The epicenter of",
+    "titleGlow": "total darkness",
+    "description": "We are designing the definitive interactive observation portal. Prepare to experience 2 minutes and 10 segundos of absolute totality in one of the clearest skies in Europe.",
+    "countdownLabel": "Time remaining until totality",
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds"
+  },
+  "form": {
+    "title": "Registration & Capacity Management",
+    "description": "Sign up for free to reserve your spot. Capacity control ensures enough space for telescopes and photographic equipment.",
+    "name": "First Name *",
+    "lastname": "Last Name *",
+    "phone": "Phone Number *",
+    "email": "Contact Email *",
+    "origin": "Where are you coming from? (City / Country) *",
+    "guests": "Number of Guests *",
+    "vehicles": "Number of Vehicles *",
+    "button": "Generate Personalized Astro-Pass"
+  },
+  "footer": {
+    "project": "Association of Friends of Astronomy • Scientific Disclosure Project • 2026",
+    "coords": "EXACT COORDINATES: LATITUDE: 41.79° N • LONGITUDE: 3.34° W • OFFICIAL ALTITUDE: 948 M"
+  }
+}

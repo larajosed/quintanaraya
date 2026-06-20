@@ -2,8 +2,16 @@
 import React, { useState, useEffect } from 'react';
 import '../css/ComingSoon.css';
 
+// Importamos los dos diccionarios locales
+import es from '../dictionaries/es.json';
+import en from '../dictionaries/en.json';
+
 export default function ComingSoon() {
+  const [lang, setLang] = useState('es');
   const [timeLeft, setTimeLeft] = useState({ days: '00', hours: '00', minutes: '00', seconds: '00' });
+
+  // Selección dinámica del diccionario basado en el estado
+  const t = lang === 'es' ? es : en;
 
   useEffect(() => {
     // Fecha objetivo: Eclipse del 12 de Agosto de 2026
@@ -36,47 +44,56 @@ export default function ComingSoon() {
     return () => clearInterval(interval);
   }, []);
 
-  // Función para procesar el envío de datos directamente a Google Sheets
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
 
-    // REEMPLAZA ESTA URL CON TU ENLACE GENERADO EN GOOGLE APPS SCRIPT
     const googleScriptUrl = "https://script.google.com/macros/s/AKfycby-pe0x5KdhT6fi67ctjA-KCD_SO1T_hV8yZ8-qYmqCMY3kWeoyb93XO1E-rMdX91x4/exec";
 
     fetch(googleScriptUrl, {
       method: 'POST',
       body: formData,
-      mode: 'no-cors' // Evita restricciones CORS al enviar de forma estática
+      mode: 'no-cors'
     })
     .then(() => {
-      alert("¡Astro-Pass Generado con éxito! Ya estás registrado.");
-      form.reset(); // Limpia los inputs del formulario automáticamente
+      alert(t.meta.alertSuccess); // Alerta traducida
+      form.reset();
     })
-    .catch(error => console.error('Error al registrar los datos:', error));
+    .catch(error => console.error(t.meta.alertError, error)); // Error traducido
   };
 
   return (
     <div className="coming-soon-container">
-      {/* Efecto de resplandor del eclipse en el fondo */}
       <div className="bg-glow"></div>
 
-      {/* HEADER */}
+      {/* HEADER CON SELECTOR INTERACTIVO */}
       <header className="coming-header">
         <div className="logo-area">
           <div className="radar-icon">
             <div className="radar-center"></div>
           </div>
           <div>
-            <span className="logo-title">QUINTANARAYA</span>
-            <span className="logo-subtitle">ECLIPSE</span>
+            <span className="logo-title">{t.header.title}</span>
+            <span className="logo-subtitle">{t.header.subtitle}</span>
           </div>
         </div>
         <div className="lang-selector">
-          <span className="lang-active">ES</span>
+          <span 
+            className={lang === 'es' ? 'lang-active' : 'lang-inactive'}
+            onClick={() => setLang('es')}
+            style={{ cursor: 'pointer' }}
+          >
+            ES
+          </span>
           <span className="lang-divider">|</span>
-          <span className="lang-inactive">EN</span>
+          <span 
+            className={lang === 'en' ? 'lang-active' : 'lang-inactive'}
+            onClick={() => setLang('en')}
+            style={{ cursor: 'pointer' }}
+          >
+            EN
+          </span>
         </div>
       </header>
 
@@ -87,38 +104,36 @@ export default function ComingSoon() {
         <div className="info-column">
           <div className="badge">
             <span className="badge-pulse"></span>
-            Eclipse • 12 Agosto 2026
+            {t.meta.badge}
           </div>
           
           <div className="text-group">
             <h1 className="main-title">
-              El epicentro de la <br />
-              <span className="gradient-text">oscuridad total</span>
+              {t.info.title1} <br />
+              <span className="gradient-text">{t.info.titleGlow}</span>
             </h1>
-            <p className="description">
-              Estamos diseñando el portal interactivo de observación definitivo. Prepárate para vivir los 2 minutos y 10 segundos de ocultación absoluta en uno de los enclaves más limpios de Europa.
-            </p>
+            <p className="description">{t.info.description}</p>
           </div>
 
           {/* CUENTA ATRÁS */}
           <div className="countdown-section">
-            <span className="countdown-label">Tiempo restante para la totalidad</span>
+            <span className="countdown-label">{t.info.countdownLabel}</span>
             <div className="countdown-grid">
               <div className="time-box">
                 <span className="time-number">{timeLeft.days}</span>
-                <span className="time-label">Días</span>
+                <span className="time-label">{t.info.days}</span>
               </div>
               <div className="time-box">
                 <span className="time-number">{timeLeft.hours}</span>
-                <span className="time-label">Horas</span>
+                <span className="time-label">{t.info.hours}</span>
               </div>
               <div className="time-box">
                 <span className="time-number">{timeLeft.minutes}</span>
-                <span className="time-label">Minutos</span>
+                <span className="time-label">{t.info.minutes}</span>
               </div>
               <div className="time-box">
                 <span className="time-number">{timeLeft.seconds}</span>
-                <span className="time-label">Segundos</span>
+                <span className="time-label">{t.info.seconds}</span>
               </div>
             </div>
           </div>
@@ -128,62 +143,59 @@ export default function ComingSoon() {
         <div className="form-column">
           <div className="form-header">
             <div className="form-indicator"></div>
-            <h2 className="form-title">Registro y Gestión de Aforo</h2>
+            <h2 className="form-title">{t.form.title}</h2>
           </div>
-          <p className="form-description">
-            Inscríbete de forma gratuita para reservar tu espacio. El control de aforo garantiza espacio suficiente para telescopios y equipos fotográficos.
-          </p>
+          <p className="form-description">{t.form.description}</p>
 
-        <form onSubmit={handleSubmit} className="registration-form">
-  
-  <div className="input-group-row">
-    <div className="input-group">
-      <label htmlFor="name">Nombre *</label>
-      <input type="text" id="name" name="name" required placeholder="e.g. Sandra" />
-    </div>
-    <div className="input-group">
-      <label htmlFor="lastname">Apellido *</label>
-      <input type="text" id="lastname" name="lastname" required placeholder="e.g. Silva" />
-    </div>
-  </div>
+          <form onSubmit={handleSubmit} className="registration-form">
+            <div className="input-group-row">
+              <div className="input-group">
+                <label htmlFor="name">{t.form.name}</label>
+                <input type="text" id="name" name="name" required placeholder="e.g. Sandra" />
+              </div>
+              <div className="input-group">
+                <label htmlFor="lastname">{t.form.lastname}</label>
+                <input type="text" id="lastname" name="lastname" required placeholder="e.g. Silva" />
+              </div>
+            </div>
 
-  <div className="input-group">
-    <label htmlFor="phone">Número de Teléfono *</label>
-    <input type="tel" id="phone" name="phone" required placeholder="e.g. +34 600 000 000" />
-  </div>
+            <div className="input-group">
+              <label htmlFor="phone">{t.form.phone}</label>
+              <input type="tel" id="phone" name="phone" required placeholder="e.g. +34 600 000 000" />
+            </div>
 
-  <div className="input-group">
-    <label htmlFor="email">Email de Contacto *</label>
-    <input type="email" id="email" name="email" required placeholder="sandra@ejemplo.com" />
-  </div>
+            <div className="input-group">
+              <label htmlFor="email">{t.form.email}</label>
+              <input type="email" id="email" name="email" required placeholder="sandra@ejemplo.com" />
+            </div>
 
-  <div className="input-group">
-    <label htmlFor="origin">¿De dónde vienes? (Ciudad / País) *</label>
-    <input type="text" id="origin" name="origin" required placeholder="e.g. Madrid, España" />
-  </div>
+            <div className="input-group">
+              <label htmlFor="origin">{t.form.origin}</label>
+              <input type="text" id="origin" name="origin" required placeholder="e.g. Madrid, España" />
+            </div>
 
-  <div className="input-group-row">
-    <div className="input-group">
-      <label htmlFor="guests">Nº de Personas *</label>
-      <input type="number" id="guests" name="guests" min="1" required placeholder="1" />
-    </div>
-    <div className="input-group">
-      <label htmlFor="vehicles">Nº de Vehículos *</label>
-      <input type="number" id="vehicles" name="vehicles" min="0" required placeholder="1" />
-    </div>
-  </div>
+            <div className="input-group-row">
+              <div className="input-group">
+                <label htmlFor="guests">{t.form.guests}</label>
+                <input type="number" id="guests" name="guests" min="1" required placeholder="1" />
+              </div>
+              <div className="input-group">
+                <label htmlFor="vehicles">{t.form.vehicles}</label>
+                <input type="number" id="vehicles" name="vehicles" min="0" required placeholder="1" />
+              </div>
+            </div>
 
-  <button type="submit" className="submit-btn">
-    Generar Astro-Pass Personalizado
-  </button>
-</form>
+            <button type="submit" className="submit-btn">
+              {t.form.button}
+            </button>
+          </form>
         </div>
       </main>
 
       {/* FOOTER */}
       <footer className="coming-footer">
-        <p>Asociación de Amigos de la Astronomía • Proyecto Científico de Divulgación • 2026</p>
-        <p className="coords">COORDENADAS EXACTAS: LATITUD: 41.79° N • LONGITUD: 3.34° W • ALTITUD OFICIAL: 948 M</p>
+        <p>{t.footer.project}</p>
+        <p className="coords">{t.footer.coords}</p>
       </footer>
     </div>
   );
