@@ -160,12 +160,6 @@ export default function ComingSoon({ lang }) {
           </form>
         </div>
       </main>
-
-      {/* FOOTER */}
-      <footer className="coming-footer">
-        <p>{t.footer.project}</p>
-        <p className="coords">{t.footer.coords}</p>
-      </footer>
     </div>
   );
 }
