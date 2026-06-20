@@ -6,11 +6,12 @@ import es from '../dictionaries/es.json';
 import en from '../dictionaries/en.json';
 
 export default function Navbar({ lang, setLang }) {
+  // Detecta el diccionario correcto según el estado 'lang'
   const t = lang === 'en' ? en : es;
 
   return (
     <nav className="cosmic-navbar">
-      {/* SECCIÓN IZQUIERDA: LOGO */}
+      {/* LOGO */}
       <div className="nav-logo-group">
         <div className="nav-radar-circle">
           <div className="nav-radar-dot"></div>
@@ -21,16 +22,15 @@ export default function Navbar({ lang, setLang }) {
         </div>
       </div>
 
-      {/* SECCIÓN CENTRAL: ENLACES DE NAVEGACIÓN */}
+      {/* ENLACES CENTRALES */}
       <ul className="nav-links-list">
         <li>
           <span className="nav-link-item link-active">
             {t.navbar?.nav?.inicio || 'INICIO'}
           </span>
         </li>
-        {['cupula', 'zonas', 'galeria', 'porque', 'astropass'].map((key) => {
+        {['zonas', 'galeria', 'porque', 'astropass'].map((key) => {
           const fallbacks = {
-            cupula: 'CÚPULA CELESTE',
             zonas: 'ZONAS DE OBSERVACIÓN',
             galeria: 'GALERÍA CÓSMICA',
             porque: 'POR QUÉ QUINTANARRAYA',
@@ -46,7 +46,7 @@ export default function Navbar({ lang, setLang }) {
         })}
       </ul>
 
-      {/* SECCIÓN DERECHA: BOTONES DE IDIOMA */}
+      {/* BOTONES DE IDIOMA CON LLAMADA A SETLANG */}
       <div className="nav-lang-box">
         <button 
           onClick={() => setLang('es')}

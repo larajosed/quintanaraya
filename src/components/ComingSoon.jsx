@@ -6,12 +6,12 @@ import '../css/ComingSoon.css';
 import es from '../dictionaries/es.json';
 import en from '../dictionaries/en.json';
 
-export default function ComingSoon() {
-  const [lang, setLang] = useState('es');
+// 1. Recibimos 'lang' como prop desde el componente padre (page.js)
+export default function ComingSoon({ lang }) {
   const [timeLeft, setTimeLeft] = useState({ days: '00', hours: '00', minutes: '00', seconds: '00' });
 
-  // Selección dinámica del diccionario basado en el estado
-  const t = lang === 'es' ? es : en;
+  // 2. Quitamos el useState interno de lang. Ahora se sincroniza con la prop global
+  const t = lang === 'en' ? en : es;
 
   useEffect(() => {
     // Fecha objetivo: Eclipse del 12 de Agosto de 2026
@@ -66,37 +66,6 @@ export default function ComingSoon() {
   return (
     <div className="coming-soon-container">
       <div className="bg-glow"></div>
-
-      {/* HEADER CON SELECTOR INTERACTIVO */}
-      <header className="coming-header">
-        <div className="logo-area">
-          <div className="radar-icon">
-            <div className="radar-center"></div>
-          </div>
-          <div>
-            <span className="logo-title">{t.header.title}</span>
-            <span className="logo-subtitle">{t.header.subtitle}</span>
-          </div>
-        </div>
-        <div className="lang-selector">
-          <span 
-            className={lang === 'es' ? 'lang-active' : 'lang-inactive'}
-            onClick={() => setLang('es')}
-            style={{ cursor: 'pointer' }}
-          >
-            ES
-          </span>
-          <span className="lang-divider">|</span>
-          <span 
-            className={lang === 'en' ? 'lang-active' : 'lang-inactive'}
-            onClick={() => setLang('en')}
-            style={{ cursor: 'pointer' }}
-          >
-            EN
-          </span>
-        </div>
-      </header>
-
       {/* MAIN CONTENT */}
       <main className="coming-main">
         

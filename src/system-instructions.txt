@@ -1,0 +1,30 @@
+# REGLAS DEL PROYECTO: QUINTANARRAYA (NEXT.JS + i18n)
+
+## 1. SISTEMA DE DISEÑO Y COLORES (COHERENCIA VISUAL)
+Mantener estrictamente la estética de portal astronómico y observación espacial profunda:
+- Fondo Principal: Negro absoluto (#000000) o Gris espacial ultra oscuro (#050505).
+- Color de Acento / Energía: Dorado/Naranja Cósmico (#E69A0B o #FF9F00) para estados activos, líneas inferiores y resplandores.
+- Texto Principal: Blanco puro (#FFFFFF) para títulos y Gris claro satinado (#A0A0A0) para descripciones fijas.
+- Componentes / Tarjetas: Fondos oscuros translúcidos con bordes finos sutiles y efectos "Glow" (resplandor difuminado) emulando la corona del eclipse solar.
+- Interactividad: Todo botón o enlace interactivo debe tener transiciones suaves (transition: all 0.3s ease) y cambiar a tonos dorados al pasar el cursor (hover).
+
+## 2. REGLAS DE INTERNACIONALIZACIÓN (i18n)
+- Queda PROHIBIDO escribir texto plano (hardcoded) directamente en el JSX de los componentes.
+- Todos los textos (títulos, descripciones, placeholders, alertas, botones) deben extraerse y estructurarse de forma idéntica en los diccionarios locales:
+  * Spanish: `src/dictionaries/es.json`
+  * English: `src/dictionaries/en.json`
+- Los componentes deben recibir y renderizar los textos dinámicamente utilizando el estado de idioma (`lang === 'es' ? es : en`).
+
+## 3. ARQUITECTURA Y ORDEN DE ARCHIVOS
+El proyecto debe seguir una estructura limpia y modular:
+- Componentes de React: Siempre dentro de `src/components/` con extensión `.jsx`.
+- Estilos CSS por Módulo: Siempre dentro de `src/css/` con extensión `.css` (un archivo CSS por cada componente para evitar colisiones).
+- Rutas de API Seguras (Backend): Siempre dentro de `src/app/api/[servicio]/route.js`.
+- Utilidades Globales: Centralizadas en `src/utils/` (ej. `src/utils/gemini.js`).
+
+## 4. FLUJO DE TRABAJO E INSTRUCCIONES DE EJECUCIÓN
+Cada vez que el usuario te pida crear o modificar una sección, debes seguir este orden exacto paso a paso:
+1. PASO 1 (Traducciones): Diseñar la estructura de datos de los textos y guardarlos primero en `src/dictionaries/es.json` y `src/dictionaries/en.json`.
+2. PASO 2 (Estilos): Crear el archivo CSS correspondiente en `src/css/` aplicando las variables y colores del sistema astronómico.
+3. PASO 3 (Estructura): Crear el componente `.jsx` en `src/components/` importando de forma limpia los estilos y los diccionarios mapeados.
+4. PASO 4 (Informe): Informar al usuario de los archivos creados para que pueda agregarlos a SourceTree y probarlos.

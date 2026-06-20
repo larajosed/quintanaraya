@@ -8,6 +8,15 @@
     "title": "QUINTANARAYA",
     "subtitle": "ECLIPSE"
   },
+  "navbar": {
+    "nav": {
+      "inicio": "INICIO",
+      "zonas": "ZONAS DE OBSERVACIÓN",
+      "galeria": "GALERÍA CÓSMICA",
+      "porque": "POR QUÉ QUINTANARRAYA",
+      "astropass": "ASTRO-PASS"
+    }
+  },
   "info": {
     "title1": "El epicentro de la",
     "titleGlow": "oscuridad total",

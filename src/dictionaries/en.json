@@ -7,6 +7,14 @@
   "header": {
     "title": "QUINTANARAYA",
     "subtitle": "ECLIPSE"
+  },"navbar": {
+    "nav": {
+      "inicio": "HOME",
+      "zonas": "OBSERVATION ZONES",
+      "galeria": "COSMIC GALLERY",
+      "porque": "WHY QUINTANARRAYA",
+      "astropass": "ASTRO-PASS"
+    }
   },
   "info": {
     "title1": "The epicenter of",
@@ -34,4 +42,5 @@
     "project": "Association of Friends of Astronomy • Scientific Disclosure Project • 2026",
     "coords": "EXACT COORDINATES: LATITUDE: 41.79° N • LONGITUDE: 3.34° W • OFFICIAL ALTITUDE: 948 M"
   }
+  
 }
