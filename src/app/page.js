@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 import ComingSoon from '../components/ComingSoon';
 import EclipseEffect from '../components/EclipseEffect';
 import Footer from '../components/Footer';
-import InfoQuitanaraya from '../components/InfoQuitanaraya';
+import InfoQuitanaraya from '../components/InfoQuitanarraya';
 import { astroPhotos } from '../data/GalleryData';
 import Gallery from '../components/Gallery';
 

@@ -2,35 +2,24 @@
 import React, { useState, useEffect } from 'react';
 import '../css/ComingSoon.css';
 
-// Importamos los dos diccionarios locales
 import es from '../dictionaries/es.json';
 import en from '../dictionaries/en.json';
 
-// 1. Recibimos 'lang' como prop desde el componente padre (page.js)
 export default function ComingSoon({ lang }) {
   const [timeLeft, setTimeLeft] = useState({ days: '00', hours: '00', minutes: '00', seconds: '00' });
-
-  // 2. Quitamos el useState interno de lang. Ahora se sincroniza con la prop global
+  const [showSuccess, setShowSuccess] = useState(false);
   const t = lang === 'en' ? en : es;
 
   useEffect(() => {
-    // Fecha objetivo: Eclipse del 12 de Agosto de 2026
     const targetDate = new Date('August 12, 2026 20:28:00').getTime();
-
     const updateCountdown = () => {
       const now = new Date().getTime();
       const difference = targetDate - now;
-
-      if (difference < 0) {
-        setTimeLeft({ days: '00', hours: '00', minutes: '00', seconds: '00' });
-        return;
-      }
-
+      if (difference < 0) return;
       const d = Math.floor(difference / (1000 * 60 * 60 * 24));
       const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
       const s = Math.floor((difference % (1000 * 60)) / 1000);
-
       setTimeLeft({
         days: d < 10 ? '0' + d : String(d),
         hours: h < 10 ? '0' + h : String(h),
@@ -38,7 +27,6 @@ export default function ComingSoon({ lang }) {
         seconds: s < 10 ? '0' + s : String(s)
       });
     };
-
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
     return () => clearInterval(interval);
@@ -48,117 +36,90 @@ export default function ComingSoon({ lang }) {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-
     const googleScriptUrl = "https://script.google.com/macros/s/AKfycby-pe0x5KdhT6fi67ctjA-KCD_SO1T_hV8yZ8-qYmqCMY3kWeoyb93XO1E-rMdX91x4/exec";
 
-    fetch(googleScriptUrl, {
-      method: 'POST',
-      body: formData,
-      mode: 'no-cors'
-    })
-    .then(() => {
-      alert(t.meta.alertSuccess); // Alerta traducida
-      form.reset();
-    })
-    .catch(error => console.error(t.meta.alertError, error)); // Error traducido
+    fetch(googleScriptUrl, { method: 'POST', body: formData, mode: 'no-cors' })
+      .then(() => {
+  setShowSuccess(true);
+  form.reset();
+  setTimeout(() => setShowSuccess(false), 4000); 
+})
+      .catch(error => console.error(t.meta.alertError, error));
   };
 
   return (
     <div className="coming-soon-container">
       <div className="bg-glow"></div>
-      {/* MAIN CONTENT */}
       <main className="coming-main">
         
-        {/* COLUMNA IZQUIERDA: Info e hilos del evento */}
         <div className="info-column">
-          <div className="badge">
-            <span className="badge-pulse"></span>
-            {t.meta.badge}
-          </div>
-          
+          <div className="badge"><span className="badge-pulse"></span>{t.meta.badge}</div>
           <div className="text-group">
-            <h1 className="main-title">
-              {t.info.title1} <br />
-              <span className="gradient-text">{t.info.titleGlow}</span>
-            </h1>
+            <h1 className="main-title">{t.info.title1} <br /><span className="gradient-text">{t.info.titleGlow}</span></h1>
             <p className="description">{t.info.description}</p>
           </div>
-
-          {/* CUENTA ATRÁS */}
           <div className="countdown-section">
             <span className="countdown-label">{t.info.countdownLabel}</span>
             <div className="countdown-grid">
-              <div className="time-box">
-                <span className="time-number">{timeLeft.days}</span>
-                <span className="time-label">{t.info.days}</span>
-              </div>
-              <div className="time-box">
-                <span className="time-number">{timeLeft.hours}</span>
-                <span className="time-label">{t.info.hours}</span>
-              </div>
-              <div className="time-box">
-                <span className="time-number">{timeLeft.minutes}</span>
-                <span className="time-label">{t.info.minutes}</span>
-              </div>
-              <div className="time-box">
-                <span className="time-number">{timeLeft.seconds}</span>
-                <span className="time-label">{t.info.seconds}</span>
-              </div>
+              <div className="time-box"><span className="time-number">{timeLeft.days}</span><span className="time-label">{t.info.days}</span></div>
+              <div className="time-box"><span className="time-number">{timeLeft.hours}</span><span className="time-label">{t.info.hours}</span></div>
+              <div className="time-box"><span className="time-number">{timeLeft.minutes}</span><span className="time-label">{t.info.minutes}</span></div>
+              <div className="time-box"><span className="time-number">{timeLeft.seconds}</span><span className="time-label">{t.info.seconds}</span></div>
             </div>
           </div>
         </div>
 
-        {/* COLUMNA DERECHA: Formulario de Registro */}
         <div className="form-column">
-          <div className="form-header">
-            <div className="form-indicator"></div>
-            <h2 className="form-title">{t.form.title}</h2>
-          </div>
-          <p className="form-description">{t.form.description}</p>
-
+          <h2 className="form-title">{t.form.title}</h2>
           <form onSubmit={handleSubmit} className="registration-form">
             <div className="input-group-row">
-              <div className="input-group">
-                <label htmlFor="name">{t.form.name}</label>
-                <input type="text" id="name" name="name" required placeholder="e.g. Sandra" />
-              </div>
-              <div className="input-group">
-                <label htmlFor="lastname">{t.form.lastname}</label>
-                <input type="text" id="lastname" name="lastname" required placeholder="e.g. Silva" />
-              </div>
+              <div className="input-group"><label>Nombre</label><input type="text" name="name" required /></div>
+              <div className="input-group"><label>Apellidos</label><input type="text" name="lastname" required /></div>
             </div>
-
-            <div className="input-group">
-              <label htmlFor="phone">{t.form.phone}</label>
-              <input type="tel" id="phone" name="phone" required placeholder="e.g. +34 600 000 000" />
-            </div>
-
-            <div className="input-group">
-              <label htmlFor="email">{t.form.email}</label>
-              <input type="email" id="email" name="email" required placeholder="sandra@ejemplo.com" />
-            </div>
-
-            <div className="input-group">
-              <label htmlFor="origin">{t.form.origin}</label>
-              <input type="text" id="origin" name="origin" required placeholder="e.g. Madrid, España" />
-            </div>
-
+            
             <div className="input-group-row">
-              <div className="input-group">
-                <label htmlFor="guests">{t.form.guests}</label>
-                <input type="number" id="guests" name="guests" min="1" required placeholder="1" />
-              </div>
-              <div className="input-group">
-                <label htmlFor="vehicles">{t.form.vehicles}</label>
-                <input type="number" id="vehicles" name="vehicles" min="0" required placeholder="1" />
-              </div>
+              <div className="input-group"><label>Edad</label><input type="number" name="age" required /></div>
+              <div className="input-group"><label>Teléfono</label><input type="tel" name="phone" required /></div>
             </div>
 
-            <button type="submit" className="submit-btn">
-              {t.form.button}
-            </button>
+            <div className="input-group"><label>Email</label><input type="email" name="email" required /></div>
+            <div className="input-group"><label>¿De dónde viene?</label><input type="text" name="origin" required /></div>
+            <div className="input-group"><label>¿Dónde se aloja?</label><input type="text" name="lodging" required /></div>
+
+            <div className="input-group">
+              <label>Número de acompañantes</label>
+              <input type="number" name="numGuests" min="0" />
+            </div>
+
+            <div className="input-group">
+              <label>Nombres de los acompañantes</label>
+              <textarea name="guestsNames" rows="2" placeholder="Ej: Juan Pérez, María García..."></textarea>
+            </div>
+
+            {/* Checkboxes alineados verticalmente */}
+            <div className="checkbox-group">
+              <label><input type="checkbox" name="parking" /> ¿Necesita plaza de parking?</label>
+              <label><input type="checkbox" name="camping" /> ¿Usará zona de acampada?</label>
+              <label><input type="checkbox" name="equipment" /> ¿Trae equipo astronómico?</label>
+            </div>
+
+            <div className="input-group">
+              <label>Descripción del equipo astronómico</label>
+              <textarea name="equipmentDetails" rows="2" placeholder="Ej: Telescopio Dobson 10'', cámaras..."></textarea>
+            </div>
+
+            <button type="submit" className="submit-btn">{t.form.button}</button>
           </form>
         </div>
+{showSuccess && (
+  <div className="success-overlay" onClick={() => setShowSuccess(false)}>
+    <div className="success-modal">
+      <div className="toast-icon">✓</div>
+      <h3>¡Solicitud enviada!</h3>
+      <p>{t.meta.alertSuccess}</p>
+    </div>
+  </div>
+)}
       </main>
     </div>
   );

@@ -1,11 +1,11 @@
 {
   "meta": {
     "badge": "Eclipse • August 12, 2026",
-    "alertSuccess": "Astro-Pass generated successfully! You are now registered.",
+    "alertSuccess": "Pass generated successfully! You are now registered.",
     "alertError": "Error registering data:"
   },
   "header": {
-    "title": "QUINTANARAYA",
+    "title": "Quintanarraya",
     "subtitle": "ECLIPSE"
   },"navbar": {
     "nav": {
@@ -36,7 +36,7 @@
     "origin": "Where are you coming from? (City / Country) *",
     "guests": "Number of Guests *",
     "vehicles": "Number of Vehicles *",
-    "button": "Generate Personalized Astro-Pass"
+    "button": "Register"
   },
   "footer": {
     "project": "Association of Friends of Astronomy • Scientific Disclosure Project • 2026",

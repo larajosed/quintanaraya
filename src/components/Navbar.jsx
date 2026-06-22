@@ -22,30 +22,6 @@ export default function Navbar({ lang, setLang }) {
         </div>
       </div>
 
-      {/* ENLACES CENTRALES */}
-      <ul className="nav-links-list">
-        <li>
-          <span className="nav-link-item link-active">
-            {t.navbar?.nav?.inicio || 'INICIO'}
-          </span>
-        </li>
-        {['zonas', 'galeria', 'porque', 'astropass'].map((key) => {
-          const fallbacks = {
-            zonas: 'ZONAS DE OBSERVACIÓN',
-            galeria: 'GALERÍA CÓSMICA',
-            porque: 'POR QUÉ QUINTANARRAYA',
-            astropass: 'ASTRO-PASS'
-          };
-          return (
-            <li key={key}>
-              <span className="nav-link-item">
-                {t.navbar?.nav?.[key] || fallbacks[key]}
-              </span>
-            </li>
-          );
-        })}
-      </ul>
-
       {/* BOTONES DE IDIOMA CON LLAMADA A SETLANG */}
       <div className="nav-lang-box">
         <button 
