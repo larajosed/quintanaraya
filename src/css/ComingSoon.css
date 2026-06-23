@@ -369,16 +369,56 @@ textarea {
   margin: 0 0 24px 0;
 }
 
-.registration-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+
+.registration-form { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 20px; 
+  width: 100%; 
 }
 
-.input-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+.input-group { 
+  flex: 1; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 8px; 
+}
+
+.input-group label { 
+  font-size: 0.75rem; 
+  font-weight: 700; 
+  text-transform: uppercase; 
+  color: #9CA3AF; 
+  margin-bottom: 2px;
+}
+
+/* Campos más anchos y altos */
+.input-group input, 
+.input-group textarea, 
+.select-wrapper select {
+  width: 100%;
+  padding: 16px 20px; /* Padding más grande para que el campo se vea más "gordo" */
+  font-size: 1rem;    /* Texto un poco más grande */
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background: rgba(0, 0, 0, 0.4);
+  color: var(--color-text-main);
+  box-sizing: border-box; /* Vital para que el padding extra no rompa el ancho */
+  transition: all 0.2s ease;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+  border-color: var(--color-gold);
+  background: rgba(0, 0, 0, 0.5);
+  outline: none;
+}
+
+/* Fila de dos columnas - Aprovechando el ancho */
+.input-group-row { 
+  display: flex; 
+  gap: 20px; 
+  width: 100%; 
 }
 
 .input-group label {
@@ -489,4 +529,22 @@ textarea {
 .coming-footer .coords {
   letter-spacing: 0.05em;
   margin-top: 4px;
+}
+
+.checkbox-group {
+  display: flex;             /* Mantiene los elementos en línea */
+  flex-direction: row;       /* LOS PONE UNO AL LADO DEL OTRO */
+  flex-wrap: wrap;           /* Si la pantalla es muy pequeña, los baja para que no se corten */
+  gap: 20px;                 /* Espacio entre cada checkbox */
+  margin: 15px 0;
+  align-items: center;       /* Alineación vertical */
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;                  /* Espacio entre el cuadro del checkbox y el texto */
+  cursor: pointer;
+  font-size: 0.85rem;        /* Tamaño ajustado para que quepan los 3 bien */
+  white-space: nowrap;       /* Evita que el texto se rompa en varias líneas innecesariamente */
 }
