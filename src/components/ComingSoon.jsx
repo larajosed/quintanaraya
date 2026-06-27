@@ -5,6 +5,7 @@ import '../css/ComingSoon.css';
 export default function ComingSoon() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [showModal, setShowModal] = useState(false);
+  const [needsParking, setNeedsParking] = useState(false);
 
   //const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxfO00dw4Koc61_p6EITFOYL7-XnHci5gAeKToatsPmvFs3vLVbERBEYOrxW1gi2rzX/exec";
 const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
@@ -94,8 +95,28 @@ Una vez realices la inscripción recibirás un mail con los datos enviados e inf
               <div className="input-group"><label>Nº personas acampada*</label><input type="number" name="campingPax" required /></div>
             </div>
             <div className="input-group-row">
-              <div className="input-group"><label>Parking (Sí/No)*</label><input type="text" name="parking" required /></div>
-              <div className="input-group"><label>Matrícula*</label><input type="text" name="plate" required /></div>
+             <div className="input-group-row">
+  <div className="input-group">
+    <label>Parking</label>
+    <select 
+      name="parking" 
+      required 
+      onChange={(e) => setNeedsParking(e.target.value === "Sí")}
+      defaultValue=""
+    >
+      <option value="" disabled>Selecciona una opción</option>
+      <option value="Sí">Sí</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+
+  {needsParking && (
+    <div className="input-group">
+      <label>Matrícula*</label>
+      <input type="text" name="plate" placeholder="Ej: 1234 ABC" required />
+    </div>
+  )}
+</div>
             </div>
             <div className="input-group"><label>Comentarios</label><textarea name="comments" rows="3"></textarea></div>
             <button type="submit" className="submit-btn">REGISTRARME</button>
