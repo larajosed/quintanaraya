@@ -18,9 +18,9 @@
     }
   },
   "info": {
-    "title1": "El epicentro de la",
-    "titleGlow": "oscuridad total",
-    "description": "Estamos diseñando el portal interactivo de observación definitivo. Prepárate para vivir los 2 minutos y 10 segundos de ocultación absoluta en uno de los enclaves más limpios de Europa.",
+    "title1": "Eclipse",
+    "titleGlow": "Quintanarraya",
+    "description": "Estamos diseñando el portal web. Prepárate para vivir la experiencia de la ocultación total del Sol en uno de los cielos más limpios de Europa. Sé testigo de este evento astronómico histórico en Quintanarraya.",
     "countdownLabel": "Tiempo restante para la totalidad",
     "days": "Días",
     "hours": "Horas",
@@ -29,15 +29,18 @@
   },
   "form": {
     "title": "Registro y Gestión de Aforo",
-    "description": "Inscríbete de forma gratuita para reservar tu espacio. El control de aforo garantiza espacio suficiente para telescopios y equipos fotográficos.",
-    "name": "Nombre *",
-    "lastname": "Apellido *",
-    "phone": "Número de Teléfono *",
-    "email": "Email de Contacto *",
-    "origin": "¿De dónde vienes? (Ciudad / País) *",
-    "guests": "Nº de Personas *",
-    "vehicles": "Nº de Vehículos *",
-    "button": "Registrar"
+    "description": "Inscríbete de forma gratuita para reservar tu espacio.",
+    "name": "Nombre y Apellidos*",
+    "dni": "DNI*",
+    "age": "Edad*",
+    "email": "Email de Contacto*",
+    "guests": "Número de Acompañantes y DNIs*",
+    "camping": "Zona acampada*",
+    "campingPax": "Nº personas acampada*",
+    "parking": "Parking (Sí/No)*",
+    "plate": "Matrícula*",
+    "comments": "Comentarios",
+    "button": "ENVIAR INSCRIPCIÓN"
   },
   "footer": {
     "project": "Asociación de Amigos de la Astronomía • Proyecto Científico de Divulgación • 2026",

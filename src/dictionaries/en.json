@@ -7,7 +7,8 @@
   "header": {
     "title": "Quintanarraya",
     "subtitle": "ECLIPSE"
-  },"navbar": {
+  },
+  "navbar": {
     "nav": {
       "inicio": "HOME",
       "zonas": "OBSERVATION ZONES",
@@ -17,9 +18,9 @@
     }
   },
   "info": {
-    "title1": "The epicenter of",
-    "titleGlow": "total darkness",
-    "description": "We are designing the definitive interactive observation portal. Prepare to experience 2 minutes and 10 segundos of absolute totality in one of the clearest skies in Europe.",
+    "title1": "Eclipse",
+    "titleGlow": "Quintanarraya",
+    "description": "We are designing the web portal. Prepare to experience the total occultation of the Sun in one of the cleanest skies in Europe.",
     "countdownLabel": "Time remaining until totality",
     "days": "Days",
     "hours": "Hours",
@@ -28,19 +29,21 @@
   },
   "form": {
     "title": "Registration & Capacity Management",
-    "description": "Sign up for free to reserve your spot. Capacity control ensures enough space for telescopes and photographic equipment.",
-    "name": "First Name *",
-    "lastname": "Last Name *",
-    "phone": "Phone Number *",
-    "email": "Contact Email *",
-    "origin": "Where are you coming from? (City / Country) *",
-    "guests": "Number of Guests *",
-    "vehicles": "Number of Vehicles *",
-    "button": "Register"
+    "description": "Sign up for free to reserve your spot.",
+    "name": "Full Name*",
+    "dni": "ID/Passport*",
+    "age": "Age*",
+    "email": "Contact Email*",
+    "guests": "Number of Guests & IDs*",
+    "camping": "Camping Zone*",
+    "campingPax": "Number of people camping*",
+    "parking": "Parking (Yes/No)*",
+    "plate": "License Plate*",
+    "comments": "Comments",
+    "button": "SUBMIT REGISTRATION"
   },
   "footer": {
     "project": "Association of Friends of Astronomy • Scientific Disclosure Project • 2026",
     "coords": "EXACT COORDINATES: LATITUDE: 41.79° N • LONGITUDE: 3.34° W • OFFICIAL ALTITUDE: 948 M"
   }
-  
 }

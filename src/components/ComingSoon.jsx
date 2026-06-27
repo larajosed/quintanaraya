@@ -2,112 +2,106 @@
 import React, { useState, useEffect } from 'react';
 import '../css/ComingSoon.css';
 
-import es from '../dictionaries/es.json';
-import en from '../dictionaries/en.json';
+export default function ComingSoon() {
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [showModal, setShowModal] = useState(false);
 
-export default function ComingSoon({ lang }) {
-  const [timeLeft, setTimeLeft] = useState({ days: '00', hours: '00', minutes: '00', seconds: '00' });
-  const [showSuccess, setShowSuccess] = useState(false);
-  const t = lang === 'en' ? en : es;
-
+  //const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxfO00dw4Koc61_p6EITFOYL7-XnHci5gAeKToatsPmvFs3vLVbERBEYOrxW1gi2rzX/exec";
+const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
   useEffect(() => {
-    const targetDate = new Date('August 12, 2026 20:28:00').getTime();
-    const updateCountdown = () => {
+    const targetDate = new Date("2026-08-12T20:28:00").getTime();
+    const interval = setInterval(() => {
       const now = new Date().getTime();
-      const difference = targetDate - now;
-      if (difference < 0) return;
-      const d = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const s = Math.floor((difference % (1000 * 60)) / 1000);
-      setTimeLeft({
-        days: d < 10 ? '0' + d : String(d),
-        hours: h < 10 ? '0' + h : String(h),
-        minutes: m < 10 ? '0' + m : String(m),
-        seconds: s < 10 ? '0' + s : String(s)
-      });
-    };
-    updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
+      const diff = targetDate - now;
+      if (diff > 0) {
+        setTimeLeft({
+          days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((diff % (1000 * 60)) / 1000)
+        });
+      }
+    }, 1000);
     return () => clearInterval(interval);
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const googleScriptUrl = "https://script.google.com/macros/s/AKfycbxfO00dw4Koc61_p6EITFOYL7-XnHci5gAeKToatsPmvFs3vLVbERBEYOrxW1gi2rzX/exec";
 
-    fetch(googleScriptUrl, { method: 'POST', body: formData, mode: 'no-cors' })
-      .then(() => {
-        setShowSuccess(true);
-        form.reset();
-        setTimeout(() => setShowSuccess(false), 4000);
-      })
-      .catch(error => console.error("Error:", error));
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, { 
+        method: 'POST', 
+        body: formData, 
+        mode: 'no-cors' 
+      });
+      setShowModal(true);
+      form.reset();
+    } catch (error) {
+      alert("Hubo un error al enviar.");
+    }
   };
 
   return (
     <div className="coming-soon-container">
-      <div className="bg-glow"></div>
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3>¡INSCRIPCIÓN RECIBIDA!</h3>
+            <p>Gracias por registrarte para el eclipse en Quintanarraya.</p>
+            <button onClick={() => setShowModal(false)} className="submit-btn">CERRAR</button>
+          </div>
+        </div>
+      )}
+
       <main className="coming-main">
         <div className="info-column">
-          <div className="badge"><span className="badge-pulse"></span>{t.meta.badge}</div>
-          <div className="text-group">
-            <h1 className="main-title">{t.info.title1} <br /><span className="gradient-text">{t.info.titleGlow}</span></h1>
-            <p className="description">{t.info.description}</p>
-          </div>
+          <h1 className="main-title gradient-text">Eclipse Total Quintanarraya</h1>
+          <p className="description">
+            Con el fin de gestionar lo mejor posible el acceso y la gestión de los asistentes a la zona de observación del eclipse, necesitamos que te registres tú y los que vengan contigo a Quintanarraya.
+Sin inscripción no habrá acceso a la zona de observación, parking y zona de acampada.
+Una vez realices la inscripción recibirás un mail con los datos enviados e información del día 12 de Agosto en Quintanarraya.
+          </p>
           <div className="countdown-section">
             <div className="countdown-grid">
-              <div className="time-box"><span className="time-number">{timeLeft.days}</span><span className="time-label">{t.info.days}</span></div>
-              <div className="time-box"><span className="time-number">{timeLeft.hours}</span><span className="time-label">{t.info.hours}</span></div>
-              <div className="time-box"><span className="time-number">{timeLeft.minutes}</span><span className="time-label">{t.info.minutes}</span></div>
-              <div className="time-box"><span className="time-number">{timeLeft.seconds}</span><span className="time-label">{t.info.seconds}</span></div>
+              <div className="time-box"><div className="time-number">{timeLeft.days}</div><div className="time-label">DÍAS</div></div>
+              <div className="time-box"><div className="time-number">{timeLeft.hours}</div><div className="time-label">HORAS</div></div>
+              <div className="time-box"><div className="time-number">{timeLeft.minutes}</div><div className="time-label">MINUTOS</div></div>
+              <div className="time-box"><div className="time-number">{timeLeft.seconds}</div><div className="time-label">SEGUNDOS</div></div>
             </div>
-          </div>
-          <div className="eclipse-info-box">
-            <h4>Eclipse Total en Quintanarraya</h4>
-            <p>La totalidad comienza a las <strong>20:28</strong>. Se recomienda buscar un horizonte despejado hacia el oeste.</p>
           </div>
         </div>
 
         <div className="form-column">
-          <h2 className="form-title">{t.form.title}</h2>
           <form onSubmit={handleSubmit} className="registration-form">
+            <div className="input-group"><label>Nombre y Apellidos*</label><input type="text" name="name" required /></div>
             <div className="input-group-row">
-              <div className="input-group"><label>Nombre</label><input type="text" name="name" required /></div>
-              <div className="input-group"><label>Apellidos</label><input type="text" name="lastname" required /></div>
+              <div className="input-group"><label>DNI*</label><input type="text" name="dni" required /></div>
+              <div className="input-group"><label>Edad*</label><input type="number" name="age" required /></div>
+            </div>
+            <div className="input-group"><label>Mail de Contacto*</label><input type="email" name="email" required /></div>
+            <div className="input-group"><label>Número de Acompañantes y DNIs*</label><textarea name="guests" rows="2" required></textarea></div>
+            <div className="input-group-row">
+              <div className="input-group">
+                <label>Zona acampada*</label>
+                <select name="camping" required>
+                  <option value="Tienda">Tienda</option>
+                  <option value="Caravana">Caravana</option>
+                  <option value="Otras">Otras</option>
+                </select>
+              </div>
+              <div className="input-group"><label>Nº personas acampada*</label><input type="number" name="campingPax" required /></div>
             </div>
             <div className="input-group-row">
-              <div className="input-group"><label>Edad</label><input type="number" name="age" required /></div>
-              <div className="input-group"><label>Teléfono</label><input type="tel" name="phone" required /></div>
+              <div className="input-group"><label>Parking (Sí/No)*</label><input type="text" name="parking" required /></div>
+              <div className="input-group"><label>Matrícula*</label><input type="text" name="plate" required /></div>
             </div>
-            <div className="input-group-row">
-              <div className="input-group"><label>¿De dónde viene?</label><input type="text" name="origin" required /></div>
-              <div className="input-group"><label>¿Dónde se aloja?</label><input type="text" name="lodging" required /></div>
-            </div>
-            <div className="input-group"><label>Email</label><input type="email" name="email" required /></div>
-            <div className="input-group"><label>Número de acompañantes</label><input type="number" name="numGuests" min="0" /></div>
-            <div className="input-group"><label>Nombres de los acompañantes</label><textarea name="guestsNames" rows="2"></textarea></div>
-            <div className="checkbox-group">
-              <label><input type="checkbox" name="parking" /> Parking</label>
-              <label><input type="checkbox" name="camping" /> Acampada</label>
-              <label><input type="checkbox" name="equipment" /> Equipo astronómico</label>
-            </div>
-            <div className="input-group"><label>Detalles del equipo</label><textarea name="equipmentDetails" rows="2"></textarea></div>
-            <button type="submit" className="submit-btn">{t.form.button}</button>
+            <div className="input-group"><label>Comentarios</label><textarea name="comments" rows="3"></textarea></div>
+            <button type="submit" className="submit-btn">REGISTRARME</button>
           </form>
         </div>
       </main>
-      {showSuccess && (
-        <div className="success-overlay" onClick={() => setShowSuccess(false)}>
-          <div className="success-modal">
-            <div className="toast-icon">✓</div>
-            <h3>¡Solicitud enviada!</h3>
-            <p>{t.meta.alertSuccess}</p>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
