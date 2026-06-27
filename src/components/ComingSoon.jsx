@@ -9,6 +9,7 @@ export default function ComingSoon() {
 
   //const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxfO00dw4Koc61_p6EITFOYL7-XnHci5gAeKToatsPmvFs3vLVbERBEYOrxW1gi2rzX/exec";
 const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
+console.log("URL del Script:", process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL);
   useEffect(() => {
     const targetDate = new Date("2026-08-12T20:28:00").getTime();
     const interval = setInterval(() => {
@@ -27,22 +28,30 @@ const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
   }, []);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
 
-    try {
-      await fetch(GOOGLE_SCRIPT_URL, { 
-        method: 'POST', 
-        body: formData, 
-        mode: 'no-cors' 
-      });
-      setShowModal(true);
-      form.reset();
-    } catch (error) {
-      alert("Hubo un error al enviar.");
-    }
-  };
+  // Asegurar que 'plate' exista aunque el usuario haya elegido 'No'
+  if (!data.plate) {
+    data.plate = ""; 
+  }
+
+  try {
+    await fetch(GOOGLE_SCRIPT_URL, { 
+      method: 'POST', 
+      body: JSON.stringify(data), 
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' }
+    });
+    setShowModal(true);
+    form.reset();
+    setNeedsParking(false); // Reseteamos el estado visual
+  } catch (error) {
+    alert("Hubo un error al enviar.");
+  }
+};
 
   return (
     <div className="coming-soon-container">
