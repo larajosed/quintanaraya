@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: 'Quintanarraya Cósmico 2026 | Portal Oficial del Eclipse Total',
-  description: 'Reserva tu entrada gratuita para el epicentro de la oscuridad total el 12 de agosto de 2026 en Quintanarraya, Burgos. Gestión de aforo y estaciones de observación.',
+  title: 'Eclipse Total Quintanarraya 2026',
+  description: 'Reserva tu entrada gratuita para el eclipse el 12 de agosto de 2026 en Quintanarraya, Burgos. Gestión de aforo y estaciones de observación.',
   keywords: ['eclipse 2026', 'Quintanarraya', 'Burgos', 'astronomia', 'oscuridad total', 'Astro-Pass'],
 };
 export default function RootLayout({ children }) {
