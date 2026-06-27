@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "badge": "Eclipse • August 12, 2026",
+    "alertSuccess": "Pass generated successfully! You are now registered.",
+    "alertError": "Error registering data:"
+  },
+  "header": {
+    "title": "Quintanarraya",
+    "subtitle": "ECLIPSE"
+  },
+  "navbar": {
+    "nav": {
+      "inicio": "HOME",
+      "zonas": "OBSERVATION ZONES",
+      "galeria": "COSMIC GALLERY",
+      "porque": "WHY QUINTANARRAYA",
+      "astropass": "ASTRO-PASS"
+    }
+  },
+  "info": {
+    "title1": "Eclipse",
+    "titleGlow": "Quintanarraya",
+    "description": "We are designing the web portal. Prepare to experience the total occultation of the Sun in one of the cleanest skies in Europe.",
+    "countdownLabel": "Time remaining until totality",
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds"
+  },
+  "form": {
+    "title": "Registration & Capacity Management",
+    "description": "Sign up for free to reserve your spot.",
+    "name": "Full Name*",
+    "dni": "ID/Passport*",
+    "age": "Age*",
+    "email": "Contact Email*",
+    "guests": "Number of Guests & IDs*",
+    "camping": "Camping Zone*",
+    "campingPax": "Number of people camping*",
+    "parking": "Parking (Yes/No)*",
+    "plate": "License Plate*",
+    "comments": "Comments",
+    "button": "SUBMIT REGISTRATION"
+  },
+  "footer": {
+    "project": "Association of Friends of Astronomy • Scientific Disclosure Project • 2026",
+    "coords": "EXACT COORDINATES: LATITUDE: 41.79° N • LONGITUDE: 3.34° W • OFFICIAL ALTITUDE: 948 M"
+  }
+}

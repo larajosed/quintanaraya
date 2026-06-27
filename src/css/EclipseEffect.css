@@ -1,0 +1,87 @@
+.eclipse-section {
+  position: relative;
+  width: 100%;
+  height: 480px; /* Aumentamos la altura de la sección */
+  background-color: var(--color-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.eclipse-container {
+  position: relative;
+  width: 220px; /* De 160px a 220px */
+  height: 220px; /* De 160px a 220px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.sun-body {
+  position: absolute;
+  width: 150px; /* De 110px a 150px */
+  height: 150px; /* De 110px a 150px */
+  background: var(--color-gold);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 40px var(--color-gold),
+    0 0 80px rgba(241, 168, 29, 0.4);
+  animation: corona-pulse 4s ease-in-out infinite alternate;
+}
+
+.moon-body {
+  position: absolute;
+  width: 151px; /* Proporcional al sol */
+  height: 151px;
+  background: var(--color-bg);
+  border-radius: 50%;
+  box-shadow: inset -8px -8px 16px rgba(255, 255, 255, 0.03);
+  transition: transform 0.1s ease-out;
+}
+.eclipse-title {
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-bottom: 1.5rem;
+}
+
+.eclipse-percentage {
+  margin-top: 1.5rem;
+  color: var(--color-gold);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+}
+
+.eclipse-slider {
+  margin-top: 1.5rem;
+  width: 160px;
+  cursor: pointer;
+  height: 3px;
+  appearance: none;
+  background: var(--color-border);
+  border-radius: 2px;
+}
+
+.eclipse-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: var(--color-gold);
+  border-radius: 50%;
+}
+
+@keyframes corona-pulse {
+  0% { transform: scale(1); box-shadow: 0 0 25px var(--color-gold), 0 0 50px rgba(241, 168, 29, 0.4); }
+  100% { transform: scale(1.02); box-shadow: 0 0 35px var(--color-gold), 0 0 70px rgba(241, 168, 29, 0.6); }
+}

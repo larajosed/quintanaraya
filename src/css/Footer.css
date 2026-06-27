@@ -1,0 +1,26 @@
+/* src/css/Footer.css */
+
+.coming-footer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.coming-footer p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.coming-footer .coords {
+  margin-top: 8px;
+  color: var(--color-gold);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}

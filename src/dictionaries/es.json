@@ -1,0 +1,49 @@
+{
+  "meta": {
+    "badge": "Eclipse • 12 Agosto 2026",
+    "alertSuccess": "¡Pase Generado con éxito! Ya estás registrado.",
+    "alertError": "Error al registrar los datos:"
+  },
+  "header": {
+    "title": "Quintanarraya",
+    "subtitle": "ECLIPSE"
+  },
+  "navbar": {
+    "nav": {
+      "inicio": "INICIO",
+      "zonas": "ZONAS DE OBSERVACIÓN",
+      "galeria": "GALERÍA CÓSMICA",
+      "porque": "POR QUÉ QUINTANARRAYA",
+      "astropass": "ASTRO-PASS"
+    }
+  },
+  "info": {
+    "title1": "Eclipse",
+    "titleGlow": "Quintanarraya",
+    "description": "Estamos diseñando el portal web. Prepárate para vivir la experiencia de la ocultación total del Sol en uno de los cielos más limpios de Europa. Sé testigo de este evento astronómico histórico en Quintanarraya.",
+    "countdownLabel": "Tiempo restante para la totalidad",
+    "days": "Días",
+    "hours": "Horas",
+    "minutes": "Minutos",
+    "seconds": "Segundos"
+  },
+  "form": {
+    "title": "Registro y Gestión de Aforo",
+    "description": "Inscríbete de forma gratuita para reservar tu espacio.",
+    "name": "Nombre y Apellidos*",
+    "dni": "DNI*",
+    "age": "Edad*",
+    "email": "Email de Contacto*",
+    "guests": "Número de Acompañantes y DNIs*",
+    "camping": "Zona acampada*",
+    "campingPax": "Nº personas acampada*",
+    "parking": "Parking (Sí/No)*",
+    "plate": "Matrícula*",
+    "comments": "Comentarios",
+    "button": "ENVIAR INSCRIPCIÓN"
+  },
+  "footer": {
+    "project": "Asociación de Amigos de la Astronomía • Proyecto Científico de Divulgación • 2026",
+    "coords": "COORDENADAS EXACTAS: LATITUD: 41.79° N • LONGITUD: 3.34° W • ALTITUD OFICIAL: 948 M"
+  }
+}

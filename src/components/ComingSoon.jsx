@@ -3,188 +3,134 @@ import React, { useState, useEffect } from 'react';
 import '../css/ComingSoon.css';
 
 export default function ComingSoon() {
-  const [timeLeft, setTimeLeft] = useState({ days: '00', hours: '00', minutes: '00', seconds: '00' });
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [showModal, setShowModal] = useState(false);
+  const [needsParking, setNeedsParking] = useState(false);
 
+  //const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxfO00dw4Koc61_p6EITFOYL7-XnHci5gAeKToatsPmvFs3vLVbERBEYOrxW1gi2rzX/exec";
+const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
   useEffect(() => {
-    // Fecha objetivo: Eclipse del 12 de Agosto de 2026
-    const targetDate = new Date('August 12, 2026 20:28:00').getTime();
-
-    const updateCountdown = () => {
+    const targetDate = new Date("2026-08-12T20:28:00").getTime();
+    const interval = setInterval(() => {
       const now = new Date().getTime();
-      const difference = targetDate - now;
-
-      if (difference < 0) {
-        setTimeLeft({ days: '00', hours: '00', minutes: '00', seconds: '00' });
-        return;
+      const diff = targetDate - now;
+      if (diff > 0) {
+        setTimeLeft({
+          days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((diff % (1000 * 60)) / 1000)
+        });
       }
-
-      const d = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const s = Math.floor((difference % (1000 * 60)) / 1000);
-
-      setTimeLeft({
-        days: d < 10 ? '0' + d : String(d),
-        hours: h < 10 ? '0' + h : String(h),
-        minutes: m < 10 ? '0' + m : String(m),
-        seconds: s < 10 ? '0' + s : String(s)
-      });
-    };
-
-    updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
+    }, 1000);
     return () => clearInterval(interval);
   }, []);
 
-  // Función para procesar el envío de datos directamente a Google Sheets
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const formData = new FormData(form);
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
 
-    // REEMPLAZA ESTA URL CON TU ENLACE GENERADO EN GOOGLE APPS SCRIPT
-    const googleScriptUrl = "https://script.google.com/macros/s/AKfycby-pe0x5KdhT6fi67ctjA-KCD_SO1T_hV8yZ8-qYmqCMY3kWeoyb93XO1E-rMdX91x4/exec";
+  // Asegurar que 'plate' exista aunque el usuario haya elegido 'No'
+  if (!data.plate) {
+    data.plate = ""; 
+  }
 
-    fetch(googleScriptUrl, {
-      method: 'POST',
-      body: formData,
-      mode: 'no-cors' // Evita restricciones CORS al enviar de forma estática
-    })
-    .then(() => {
-      alert("¡Astro-Pass Generado con éxito! Ya estás registrado.");
-      form.reset(); // Limpia los inputs del formulario automáticamente
-    })
-    .catch(error => console.error('Error al registrar los datos:', error));
-  };
+  try {
+    await fetch(GOOGLE_SCRIPT_URL, { 
+      method: 'POST', 
+      body: JSON.stringify(data), 
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' }
+    });
+    setShowModal(true);
+    form.reset();
+    setNeedsParking(false); // Reseteamos el estado visual
+  } catch (error) {
+    alert("Hubo un error al enviar.");
+  }
+};
 
   return (
     <div className="coming-soon-container">
-      {/* Efecto de resplandor del eclipse en el fondo */}
-      <div className="bg-glow"></div>
-
-      {/* HEADER */}
-      <header className="coming-header">
-        <div className="logo-area">
-          <div className="radar-icon">
-            <div className="radar-center"></div>
-          </div>
-          <div>
-            <span className="logo-title">QUINTANARAYA</span>
-            <span className="logo-subtitle">ECLIPSE</span>
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3>¡INSCRIPCIÓN RECIBIDA!</h3>
+            <p>Gracias por registrarte para el eclipse en Quintanarraya.</p>
+            <button onClick={() => setShowModal(false)} className="submit-btn">CERRAR</button>
           </div>
         </div>
-        <div className="lang-selector">
-          <span className="lang-active">ES</span>
-          <span className="lang-divider">|</span>
-          <span className="lang-inactive">EN</span>
-        </div>
-      </header>
+      )}
 
-      {/* MAIN CONTENT */}
       <main className="coming-main">
-        
-        {/* COLUMNA IZQUIERDA: Info e hilos del evento */}
         <div className="info-column">
-          <div className="badge">
-            <span className="badge-pulse"></span>
-            Eclipse • 12 Agosto 2026
-          </div>
-          
-          <div className="text-group">
-            <h1 className="main-title">
-              El epicentro de la <br />
-              <span className="gradient-text">oscuridad total</span>
-            </h1>
-            <p className="description">
-              Estamos diseñando el portal interactivo de observación definitivo. Prepárate para vivir los 2 minutos y 10 segundos de ocultación absoluta en uno de los enclaves más limpios de Europa.
-            </p>
-          </div>
-
-          {/* CUENTA ATRÁS */}
+          <h1 className="main-title gradient-text">Eclipse Total Quintanarraya</h1>
+          <p className="description">
+            Con el fin de gestionar lo mejor posible el acceso y la gestión de los asistentes a la zona de observación del eclipse, necesitamos que te registres tú y los que vengan contigo a Quintanarraya.
+Sin inscripción no habrá acceso a la zona de observación, parking y zona de acampada.
+Una vez realices la inscripción recibirás un mail con los datos enviados e información del día 12 de Agosto en Quintanarraya.
+          </p>
           <div className="countdown-section">
-            <span className="countdown-label">Tiempo restante para la totalidad</span>
             <div className="countdown-grid">
-              <div className="time-box">
-                <span className="time-number">{timeLeft.days}</span>
-                <span className="time-label">Días</span>
-              </div>
-              <div className="time-box">
-                <span className="time-number">{timeLeft.hours}</span>
-                <span className="time-label">Horas</span>
-              </div>
-              <div className="time-box">
-                <span className="time-number">{timeLeft.minutes}</span>
-                <span className="time-label">Minutos</span>
-              </div>
-              <div className="time-box">
-                <span className="time-number">{timeLeft.seconds}</span>
-                <span className="time-label">Segundos</span>
-              </div>
+              <div className="time-box"><div className="time-number">{timeLeft.days}</div><div className="time-label">DÍAS</div></div>
+              <div className="time-box"><div className="time-number">{timeLeft.hours}</div><div className="time-label">HORAS</div></div>
+              <div className="time-box"><div className="time-number">{timeLeft.minutes}</div><div className="time-label">MINUTOS</div></div>
+              <div className="time-box"><div className="time-number">{timeLeft.seconds}</div><div className="time-label">SEGUNDOS</div></div>
             </div>
           </div>
         </div>
 
-        {/* COLUMNA DERECHA: Formulario de Registro */}
         <div className="form-column">
-          <div className="form-header">
-            <div className="form-indicator"></div>
-            <h2 className="form-title">Registro y Gestión de Aforo</h2>
-          </div>
-          <p className="form-description">
-            Inscríbete de forma gratuita para reservar tu espacio. El control de aforo garantiza espacio suficiente para telescopios y equipos fotográficos.
-          </p>
-
-        <form onSubmit={handleSubmit} className="registration-form">
-  
-  <div className="input-group-row">
-    <div className="input-group">
-      <label htmlFor="name">Nombre *</label>
-      <input type="text" id="name" name="name" required placeholder="e.g. Sandra" />
-    </div>
-    <div className="input-group">
-      <label htmlFor="lastname">Apellido *</label>
-      <input type="text" id="lastname" name="lastname" required placeholder="e.g. Silva" />
-    </div>
-  </div>
-
+          <form onSubmit={handleSubmit} className="registration-form">
+            <div className="input-group"><label>Nombre y Apellidos*</label><input type="text" name="name" required /></div>
+            <div className="input-group-row">
+              <div className="input-group"><label>DNI*</label><input type="text" name="dni" required /></div>
+              <div className="input-group"><label>Edad*</label><input type="number" name="age" required /></div>
+            </div>
+            <div className="input-group"><label>Mail de Contacto*</label><input type="email" name="email" required /></div>
+            <div className="input-group"><label>Número de Acompañantes y DNIs*</label><textarea name="guests" rows="2" required></textarea></div>
+            <div className="input-group-row">
+              <div className="input-group">
+                <label>Zona acampada*</label>
+                <select name="camping" required>
+                  <option value="Tienda">Tienda</option>
+                  <option value="Caravana">Caravana</option>
+                  <option value="Otras">Otras</option>
+                </select>
+              </div>
+              <div className="input-group"><label>Nº personas acampada*</label><input type="number" name="campingPax" required /></div>
+            </div>
+            <div className="input-group-row">
+             <div className="input-group-row">
   <div className="input-group">
-    <label htmlFor="phone">Número de Teléfono *</label>
-    <input type="tel" id="phone" name="phone" required placeholder="e.g. +34 600 000 000" />
+    <label>Parking</label>
+    <select 
+      name="parking" 
+      required 
+      onChange={(e) => setNeedsParking(e.target.value === "Sí")}
+      defaultValue=""
+    >
+      <option value="" disabled>Selecciona una opción</option>
+      <option value="Sí">Sí</option>
+      <option value="No">No</option>
+    </select>
   </div>
 
-  <div className="input-group">
-    <label htmlFor="email">Email de Contacto *</label>
-    <input type="email" id="email" name="email" required placeholder="sandra@ejemplo.com" />
-  </div>
-
-  <div className="input-group">
-    <label htmlFor="origin">¿De dónde vienes? (Ciudad / País) *</label>
-    <input type="text" id="origin" name="origin" required placeholder="e.g. Madrid, España" />
-  </div>
-
-  <div className="input-group-row">
+  {needsParking && (
     <div className="input-group">
-      <label htmlFor="guests">Nº de Personas *</label>
-      <input type="number" id="guests" name="guests" min="1" required placeholder="1" />
+      <label>Matrícula*</label>
+      <input type="text" name="plate" placeholder="Ej: 1234 ABC" required />
     </div>
-    <div className="input-group">
-      <label htmlFor="vehicles">Nº de Vehículos *</label>
-      <input type="number" id="vehicles" name="vehicles" min="0" required placeholder="1" />
-    </div>
-  </div>
-
-  <button type="submit" className="submit-btn">
-    Generar Astro-Pass Personalizado
-  </button>
-</form>
+  )}
+</div>
+            </div>
+            <div className="input-group"><label>Comentarios</label><textarea name="comments" rows="3"></textarea></div>
+            <button type="submit" className="submit-btn">REGISTRARME</button>
+          </form>
         </div>
       </main>
-
-      {/* FOOTER */}
-      <footer className="coming-footer">
-        <p>Asociación de Amigos de la Astronomía • Proyecto Científico de Divulgación • 2026</p>
-        <p className="coords">COORDENADAS EXACTAS: LATITUD: 41.79° N • LONGITUD: 3.34° W • ALTITUD OFICIAL: 948 M</p>
-      </footer>
     </div>
   );
 }

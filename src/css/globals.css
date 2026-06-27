@@ -1,0 +1,20 @@
+/* src/css/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+
+:root {
+  --color-bg: #0B0A10;          /* Fondo principal */
+  --color-card: #13111C;        /* Fondo tarjetas/formulario */
+  --color-gold: #F1A81D;
+  --color-gold-hover: #D49216;
+  --color-text-main: #FFFFFF;
+  --color-text-muted: #9CA3AF;
+  --color-border: rgba(255, 255, 255, 0.08);
+}
+
+body, main {
+  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: var(--color-bg);
+  
+  color: var(--color-text-main);
+}
