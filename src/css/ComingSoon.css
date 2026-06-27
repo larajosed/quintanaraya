@@ -106,3 +106,46 @@
 }
 .modal-content h3 { color: #F1A81D; margin-bottom: 16px; }
 .modal-content p { color: #FFFFFF; margin-bottom: 24px; }
+
+/* AJUSTES PARA MÓVIL */
+@media (max-width: 767px) {
+  .coming-soon-container {
+    padding: 24px 16px; /* Menos padding lateral para aprovechar espacio */
+  }
+
+  .main-title {
+    font-size: 2.2rem; /* Título más pequeño para que no se corte */
+    line-height: 1.1;
+  }
+
+  .coming-main {
+    gap: 32px;
+  }
+
+  .countdown-grid {
+    gap: 8px; /* Menos espacio entre cajas */
+    margin-top: 16px;
+  }
+
+  .time-box {
+    padding: 10px 8px;
+  }
+
+  .time-number {
+    font-size: 1.5rem; /* Números más pequeños en móvil */
+  }
+
+  /* FORZAR COLUMNAS A FILAS EN MÓVIL */
+  .input-group-row {
+    flex-direction: column; /* Apila DNI/Edad y Camping/Pax uno debajo del otro */
+    gap: 16px;
+  }
+
+  .form-column {
+    padding: 20px; /* Menos espacio interior en el formulario */
+  }
+
+  .modal-content {
+    padding: 24px;
+  }
+}

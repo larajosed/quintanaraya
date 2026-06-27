@@ -9,7 +9,6 @@ export default function ComingSoon() {
 
   //const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxfO00dw4Koc61_p6EITFOYL7-XnHci5gAeKToatsPmvFs3vLVbERBEYOrxW1gi2rzX/exec";
 const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
-console.log("URL del Script:", process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL);
   useEffect(() => {
     const targetDate = new Date("2026-08-12T20:28:00").getTime();
     const interval = setInterval(() => {
