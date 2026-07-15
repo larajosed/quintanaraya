@@ -106,7 +106,7 @@ export default function ComingSoon() {
               <div className="input-group"><label>DNI*</label><input type="text" name="dni" required /></div>
               <div className="input-group"><label>Edad*</label><input type="number" name="age" required /></div>
             </div>
-            <div className="input-group"><label>Mail de Contacto*</label><input type="email" name="email" required /></div>
+            <div className="input-group"><label>Email de contacto*</label><input type="email" name="email" required /></div>
 
             {/* Acompañantes Condicionales */}
             <div className="input-group">
