@@ -166,6 +166,12 @@ export default function ComingSoon() {
             </div>
 
             <div className="input-group"><label>Comentarios</label><textarea name="comments" rows="3"></textarea></div>
+            {/* NUEVO TEXTO INFORMATIVO ANTES DEL BOTÓN */}
+            <div className="form-info-box" style={{ background: '#f4f4f4', padding: '10px 12px', borderRadius: '4px', marginBottom: '15px', fontSize: '0.85em', color: '#555' }}>
+              <p style={{ margin: '0 0 5px 0' }}>⚠️ <strong>Aviso:</strong> Al inscribirte no recibirás un email automático de respuesta.</p>
+              <p style={{ margin: '0 0 5px 0' }}>A partir de la semana que viene se enviará un correo informativo a todos los inscritos.</p>
+              <p style={{ margin: '0' }}>Contacto: <a href="mailto:eclipse.quintanarraya1@gmail.com">eclipse.quintanarraya1@gmail.com</a></p>
+            </div>
             <button type="submit" className="submit-btn">REGISTRARME</button>
           </form>
         </div>
