@@ -4,6 +4,7 @@ import ComingSoon from '@/components/ComingSoon';
 import EclipseEffect from '@/components/EclipseEffect';
 import InfoQuitanarraya from '@/components/InfoQuitanarraya';
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 export default function PaginaRegistro() {
   // 1. Define el estado aquí
@@ -17,6 +18,7 @@ export default function PaginaRegistro() {
       {/* 3. Pásale el estado al resto de componentes  <EclipseEffect lang={lang} />*/}
       <ComingSoon lang={lang} />    
       <InfoQuitanarraya lang={lang} /> 
+      <Footer lang={lang}/>
     </main>
   );
 }
