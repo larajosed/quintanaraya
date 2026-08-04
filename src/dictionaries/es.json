@@ -17,6 +17,18 @@
       "astropass": "ASTRO-PASS"
     }
   },
+  
+  "coming_soon": {
+    "title": "Eclipse Total Quintanarraya",
+    "description": "Con el fin de gestionar lo mejor posible el acceso y la gestión de los asistentes a la zona de observación del eclipse, necesitamos que te registres tú y los que vengan contigo a Quintanarraya. Sin inscripción no habrá acceso a la zona de observación, parking y zona de acampada. Una vez realices la inscripción recibirás un mail con los datos enviados e información del día 12 de Agosto en Quintanarraya.",
+    "days": "DÍAS",
+    "hours": "HORAS",
+    "minutes": "MINUTO",
+    "seconds": "SEGUNDOS",
+    "closed_title": "¡Aforo Completado!",
+    "closed_description": "Muchas gracias por el interés mostrado. Se ha alcanzado el límite máximo de aforo previsto y ya no se admiten más inscripciones."
+  
+},
   "info": {
     "title1": "Eclipse",
     "titleGlow": "Quintanarraya",
@@ -45,5 +57,43 @@
   "footer": {
     "project": "Asociación de Amigos de la Astronomía • Proyecto Científico de Divulgación • 2026",
     "coords": "COORDENADAS EXACTAS: LATITUD: 41.79° N • LONGITUD: 3.34° W • ALTITUD OFICIAL: 948 M"
+  }, 
+  "info_quintanarraya": {
+       "eclipse": {
+      "title": "ECLIPSE",
+      "text1": "La oportunidad de ver un eclipse total de Sol desde casa es un auténtico privilegio que ocurre muy pocas veces en la vida. En el último siglo y pico, la Península Ibérica ha sido testigo de muy pocos de estos eventos:",
+      "subtitle": "Burgos 2026: ¿Cuándo y cómo será el Eclipse?",
+      "mapCaption": "Franja de la totalidad del eclipse en España",
+      "text2": "El próximo 12 de agosto de 2026, Burgos se convertirá en uno de los escenarios protagonistas de este gran evento astronómico. Sin embargo, este eclipse será algo deslucido al estar atardeciendo, y \"no volverá hacerse de día\" tras la totalidad, como en todos los que hemos presenciado hasta ahora.",
+      "efemeridesTitle": "Las efemérides para este eclipse desde Quintanarraya son las siguientes:",
+      "item1": "Inicio del eclipse: 19:33 h (el Sol a unos 18º de altura).",
+      "item2": "Comienzo de la TOTALIDAD: 20:28 h.",
+      "item3": "Máximo del eclipse: 20:28 h (Sol muy bajo, a 8º sobre el horizonte).",
+      "item4": "Fin de la TOTALIDAD: 20:30 h.",
+      "item5": "Duración de la totalidad: Aproximadamente 1 minuto y 44 segundos.",
+      "item6": "Puesta de Sol: Alrededor de las 21:17 h, con el Sol todavía parcialmente eclipsado, lo que nos regalará un atardecer único."
+    },
+    "informacion": {
+      "title": "ZONA DE OBSERVACIÓN",
+      "descripcion": "La Zona de observación es una parcela de 2 hectáreas de área, que será ocupada únicamente por las 800 personas que se inscriban previamente al evento, con el fin de garantizar la observación del eclipse garantizando que los asistentes estén cómodos y evitar una masificación excesiva de gente.",
+      "servicios": "Tendremos presencia de dispositivos procedentes de Aranda de Duero de la Guardia Civil, de tráfico y de Protección Civil; Igualmente contaremos con ambulancia, baños químicos y barra de bar.",
+      "acceso": "El Acceso a la zona de observación será únicamente peatonal (a menos que haya personas con problemas de movilidad, que lo avisen con anterioridad al evento). A la entrada, habrá que mostrar la entrada que recibirán los inscritos en el punto de recepción, “Salón de Casa Villa”, ubicado debajo del bar, cuando presenten el DNI (en caso de traer acompañantes, sólo presentará DNI el que realizó la inscripción).",
+      "acceso_vehiculos": "Durante unos intervalos de horas que se definirán a medida que se acerque la fecha, se podrá acceder en coche únicamente a descargar material y/o personas con movilidad reducida, tras lo cual, deberán bajar el coche y dejarlo en el aparcamiento.",
+      "distancia": "Una vez que tengas la entrada a la zona de observación, te puedes dirigir hacia allí. Desde el punto de recepción e información al punto de observación hay 700m de distancia.",
+      "descarga_detalle": "Se podrá subir en coche para dejar el equipaje que nos haga falta para observar el eclipse (instrumental astronómico, mesas, sillas, picoteo …) y acercar a las personas acompañantes que lo necesiten, pero no se podrá estacionar allí. Una vez que se realice la descarga, el coche tendrá que volver a bajar y dejarlo estacionado en el aparcamiento. Únicamente podrán dejar el coche en la zona de observación aquellas personas de movilidad reducida o con permiso expreso de la organización.",
+      "horarios_acceso": "El acceso a la zona de observación estará controlado y se abrirá a partir de las 16:00h, con el fin de que la gente no esté expuesta demasiado tiempo al Sol. El acceso se cortará al tráfico desde las 18:30 hasta que finalice el eclipse. Una vez acabado el eclipse, primero bajarán las personas, y sólo después se permitirá el acceso de vehículos para cargar lo que hayamos subido al comienzo, así como montar a personas que necesiten bajar en coche.",
+      "aviso": "NO SE PERMITIRÁ EL ACCESO DE VEHICULOS EN LA ZONA DE OBSERVACION EXCEPTO CON PERMISO ESPECIAL DE LA ORGANIZACION (por espacio y por seguridad).",
+      "parking_title": "ZONA APARCAMIENTO Y ZONA DE ACAMPADA",
+      "parking_text": "Para los asistentes a la observación del eclipse, el Ayuntamiento de Quintanarraya ha dispuesto una zona de aparcamiento con el fin de no saturar el pueblo de coches, puesto que durante esta semana celebramos la semana cultural organizada por la “A.C.La Espiga”. Ambas zonas están a la entrada del pueblo."
+    },
+    "acceso": {
+      "title": "Acceso a Quintanarraya",
+      "text1": "Para acceder a Quintanarraya hay dos accesos, uno viniendo desde Huerta de Rey y el otro viniendo desde Peñalba de castro. La entrada únicamente será por el primer acceso. El segundo acceso se empleará como vía de salida de Quintanarraya (de esta forma se evita un exceso de tráfico dentro del pueblo).",
+      "text2": "Tras entrar por el acceso, la zona de aparcamiento se encuentra siguiendo la carretera a 1 Km desde la entrada. Se dejará el coche en el aparcamiento y se dirigirá al punto de recepción e información que se encuentra a 500 m, en frente de la Iglesia y debajo del bar. En el punto de recepción e información nos facilitarán las entradas a la zona de observación tras la identificación de la persona inscrita."
+    },
+    "servicios": {
+      "title": "Servicios",
+      "text": "Tendremos presencia de dispositivos procedentes de Aranda de Duero de la Guardia Civil, DGT de tráfico y de Protección Civil."
+    }
   }
 }

@@ -1,115 +1,86 @@
 /* --- CONTENEDOR PRINCIPAL --- */
-.gallery-container {
-  width: 100%;
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 20px;
-}
+.gallery-container { width: 100%; max-width: 1100px; margin: 40px auto; padding: 20px; }
+.gallery-header { text-align: center; margin-bottom: 40px; }
 
-/* --- ENCABEZADO (CENTRADO) --- */
-.gallery-header {
-  text-align: center;
-  margin-bottom: 40px;
+/* --- CARRUSEL HORIZONTAL --- */
+.gallery-wrapper { 
+  position: relative; 
+  display: flex; 
+  align-items: center; 
 }
 
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  overflow-x: auto; /* Mantenemos el scroll activo para JS */
+  overflow-y: hidden; /* Corta cualquier posible scroll vertical */
   gap: 16px;
+  scroll-behavior: smooth;
+  width: 100%;
+  
+  /* ESTAS LÍNEAS OCULTAN LA BARRA PERO MANTIENEN LA FUNCIÓN DE SCROLL */
+  scrollbar-width: none; 
+  -ms-overflow-style: none;
 }
+.gallery-grid::-webkit-scrollbar { display: none; }
 
-@media (max-width: 900px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .gallery-grid { grid-template-columns: 1fr; } }
-
-/* --- TARJETAS --- */
 .gallery-card {
+  flex: 0 0 calc(25% - 12px);
+  aspect-ratio: 1 / 1;
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  aspect-ratio: 1 / 1;
   cursor: pointer;
   transition: transform 0.3s ease;
+  flex-shrink: 0;
 }
+.gallery-card:hover { transform: scale(1.02); filter: brightness(1.1); }
+.gallery-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.gallery-card:hover {
-  transform: scale(1.02);
-  filter: brightness(1.1);
+/* Flechas carrusel */
+.nav-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6); color: white; border: none;
+  width: 40px; height: 40px; border-radius: 50%;
+  cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center;
 }
+.nav-arrow.left { left: -50px; }
+.nav-arrow.right { right: -50px; }
 
-.gallery-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* --- MODAL (ANIMACIÓN FLUIDA) --- */
+/* --- MODAL Y SLIDER --- */
 .modal-overlay {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  
-  /* Estado cerrado */
-  opacity: 0;
-  pointer-events: none; 
-  transition: opacity 0.3s ease-in-out;
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+}
+.modal-overlay.open { opacity: 1; pointer-events: auto; }
+.modal-slider { display: flex; align-items: center; justify-content: center; position: relative; width: 100%; height: 100%; }
+
+.modal-slider img {
+  max-width: 80vw; max-height: 85vh; object-fit: contain;
+  border: none !important; background: transparent !important; box-shadow: none !important;
 }
 
-.modal-overlay.open {
-  opacity: 1;
-  pointer-events: auto;
+/* --- CONTROLES MODAL --- */
+.nav-btn {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5); color: white; border: none; font-size: 2rem;
+  padding: 20px; cursor: pointer; z-index: 1002; border-radius: 50%;
 }
+.nav-btn.prev { left: 20px; }
+.nav-btn.next { right: 20px; }
+.nav-btn:hover { background: rgba(255, 255, 255, 0.2); }
 
-.modal-content {
-  position: relative;
-  transition: transform 0.3s ease-in-out;
-  transform: scale(0.95);
-  
-  /* Corrige la línea blanca forzando el centrado del contenido */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 0; 
-}
-
-.modal-overlay.open .modal-content {
-  transform: scale(1);
-}
-
-.modal-content img {
-  max-width: 90vw;
-  max-height: 85vh;
-  border-radius: 8px;
-  display: block;
-  box-shadow: none;
-}
-
-/* --- BOTÓN CERRAR --- */
 .close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1rem;
-  transition: background 0.2s;
-  z-index: 10;
+  position: absolute; top: 20px; right: 20px;
+  background: rgba(0, 0, 0, 0.5); color: white; border: none; border-radius: 50%;
+  width: 40px; height: 40px; cursor: pointer; display: flex; align-items: center;
+  justify-content: center; font-weight: bold; font-size: 1.2rem; z-index: 1003;
 }
+.close-btn:hover { background: rgba(255, 255, 255, 0.2); }
 
-.close-btn:hover {
-  background: rgba(0, 0, 0, 0.8);
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) { 
+  .gallery-card { flex: 0 0 calc(50% - 8px); } 
+  .nav-arrow { display: none; } 
 }

@@ -17,6 +17,17 @@
       "astropass": "ASTRO-PASS"
     }
   },
+  "coming_soon": {
+    "title": "Total Solar Eclipse Quintanarraya",
+    "description": "In order to best manage access and attendee capacity at the eclipse observation area, you need to register yourself and those accompanying you to Quintanarraya. Without registration, there will be no access to the observation area, parking, or camping site. Once registered, you will receive an email with your submitted details and information for August 12 in Quintanarraya.",
+    "days": "DAYS",
+    "hours": "HOURS",
+    "minutes": "MINUTES",
+    "seconds": "SECONDS",
+    "closed_title": "Capacity Reached!",
+    "closed_description": "Thank you very much for your interest. The maximum capacity limit has been reached, and registrations are now closed."
+  }
+,
   "info": {
     "title1": "Eclipse",
     "titleGlow": "Quintanarraya",
@@ -45,5 +56,43 @@
   "footer": {
     "project": "Association of Friends of Astronomy • Scientific Disclosure Project • 2026",
     "coords": "EXACT COORDINATES: LATITUDE: 41.79° N • LONGITUDE: 3.34° W • OFFICIAL ALTITUDE: 948 M"
+  }, 
+  "info_quintanarraya": {
+       "eclipse": {
+      "title": "ECLIPSE",
+      "text1": "The opportunity to see a total solar eclipse from home is a true privilege that happens very few times in a lifetime. Over the last century and a bit, the Iberian Peninsula has witnessed very few of these events:",
+      "subtitle": "Burgos 2026: When and how will the Eclipse be?",
+      "mapCaption": "Path of totality of the eclipse in Spain",
+      "text2": "On August 12, 2026, Burgos will become one of the starring scenarios of this great astronomical event. However, this eclipse will be somewhat muted as it is happening at sunset, and it \"will not become daytime again\" after totality, unlike all those we have witnessed so far.",
+      "efemeridesTitle": "The ephemeris for this eclipse from Quintanarraya are as follows:",
+      "item1": "Eclipse start: 19:33 h (Sun at about 18º altitude).",
+      "item2": "Beginning of TOTALITY: 20:28 h.",
+      "item3": "Maximum of the eclipse: 20:28 h (Sun very low, at 8º above the horizon).",
+      "item4": "End of TOTALITY: 20:30 h.",
+      "item5": "Duration of totality: Approximately 1 minute and 44 seconds.",
+      "item6": "Sunset: Around 21:17 h, with the Sun still partially eclipsed, which will give us a unique sunset."
+    },
+    "informacion": {
+      "title": "OBSERVATION AREA",
+      "descripcion": "The observation area is a 2-hectare plot, which will be occupied exclusively by the 800 people who pre-register for the event, in order to ensure the eclipse observation while guaranteeing attendee comfort and avoiding excessive overcrowding.",
+      "servicios": "We will have devices from the Aranda de Duero Civil Guard, traffic police, and Civil Protection; we will also have an ambulance, chemical toilets, and a bar area.",
+      "acceso": "Access to the observation area will be pedestrian-only (unless there are people with mobility issues, who should notify the organization in advance). Upon entry, registered attendees must show the ticket received at the reception point, “Salón de Casa Villa” located below the bar, while presenting their ID (in the case of bringing guests, only the person who made the registration will present their ID).",
+      "acceso_vehiculos": "During specific time intervals to be defined as the date approaches, cars will be allowed access only to drop off equipment and/or people with reduced mobility, after which they must drive the car back down and leave it in the parking lot.",
+      "distancia": "Once you have your entry pass for the observation area, you can head over there. The distance from the reception and information point to the observation point is 700 meters.",
+      "descarga_detalle": "You can drive up to drop off the luggage needed to observe the eclipse (astronomical equipment, tables, chairs, snacks...) and bring companions who need it, but parking will not be allowed there. Once unloading is complete, the car must go back down and park in the designated lot. Only people with reduced mobility or express permission from the organization may leave their car in the observation area.",
+      "horarios_acceso": "Access to the observation area will be controlled and will open starting at 4:00 PM, to prevent people from being exposed to the sun for too long. Access will be cut off to traffic from 6:30 PM until the eclipse ends. Once the eclipse is over, people will walk down first, and only afterwards will vehicle access be permitted to load what was brought up at the beginning, as well as to pick up people who need to ride down in a car.",
+      "aviso": "VEHICLE ACCESS TO THE OBSERVATION AREA WILL NOT BE PERMITTED EXCEPT WITH SPECIAL PERMISSION FROM THE ORGANIZATION (due to space and safety reasons).",
+      "parking_title": "PARKING AND CAMPING AREA",
+      "parking_text": "For attendees of the eclipse observation, the Quintanarraya City Council has set up a parking area to avoid saturating the town with cars, as we are celebrating the cultural week organized by the “A.C. La Espiga” during this week. Both areas are at the entrance of the town."
+    }, 
+    "acceso": {
+      "title": "Access to Quintanarraya",
+      "text1": "To access Quintanarraya there are two entrances, one coming from Huerta de Rey and the other coming from Peñalba de Castro. Entry will exclusively be through the first entrance. The second entrance will be used as an exit route from Quintanarraya (this avoids excessive traffic within the town).",
+      "text2": "After entering through the access point, the parking area is located following the road 1 km from the entrance. You will leave your car in the parking lot and head to the reception and information point located 500 m away, in front of the church and below the bar. At the reception and information point, entry passes for the observation area will be provided upon identification of the registered person."
+    },
+    "servicios": {
+      "title": "Services",
+      "text": "We will have presence of units from Aranda de Duero of the Civil Guard, Traffic DGT, and Civil Protection."
+    }
   }
 }

@@ -1,8 +1,6 @@
 "use client";
 import React, { useState } from 'react';
 import '../css/EclipseEffect.css';
-
-// Importamos diccionarios (asegúrate de que las rutas sean correctas)
 import es from '../dictionaries/es.json';
 import en from '../dictionaries/en.json';
 

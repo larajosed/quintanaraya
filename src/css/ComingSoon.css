@@ -16,9 +16,9 @@
 
 .coming-soon-container {
   font-family: 'Space Grotesk', sans-serif;
-  min-height: 100vh;
+  min-height: auto;
   width: 100vw;
-  padding: 48px 0; 
+padding: 24px 0; 
   position: relative;
   background-image: url('/images/fondo.jpg'); 
   background-size: cover;
