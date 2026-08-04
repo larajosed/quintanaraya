@@ -19,44 +19,44 @@ export const parkingPhotos = [
 
 export const quintanarrayaPhotos = [
   {
-    url: '/images/imagen1.png', // Cambiado de src a url
+    url: '/images/Imagen1.png', // Cambiado de src a url
     width: 16,
     height: 9,
     alt: "Horario del eclipse"
   },
   {
-    url: '/images/imagen2.png', // Cambiado de src a url
+    url: '/images/Imagen2.png', // Cambiado de src a url
     width: 4,
     height: 3,
     alt: "Horario del eclipse"
   },
   {
-    url: '/images/imagen3.png', // Cambiado de src a url
+    url: '/images/Imagen3.png', // Cambiado de src a url
     width: 4,
     height: 3,
     alt: "Horario del eclipse"
   }, {
-    url: '/images/imagen4.png', // Cambiado de src a url
+    url: '/images/Imagen4.png', // Cambiado de src a url
     width: 4,
     height: 3,
     alt: "Horario del eclipse"
   }, {
-    url: '/images/imagen5.png', // Cambiado de src a url
+    url: '/images/Imagen5.png', // Cambiado de src a url
     width: 4,
     height: 3,
     alt: "Horario del eclipse"
   }, {
-    url: '/images/imagen6.png', // Cambiado de src a url
+    url: '/images/Imagen6.png', // Cambiado de src a url
     width: 4,
     height: 3,
     alt: "Horario del eclipse"
   }, {
-    url: '/images/imagen7.png', // Cambiado de src a url
+    url: '/images/Imagen7.png', // Cambiado de src a url
     width: 4,
     height: 3,
     alt: "Recorrido del eclipse"
   },{
-    url: '/images/imagen8.png', // Cambiado de src a url
+    url: '/images/Imagen8.png', // Cambiado de src a url
     width: 4,
     height: 3,
     alt: "Recorrido del eclipse"
