@@ -16,9 +16,9 @@
 
 .coming-soon-container {
   font-family: 'Space Grotesk', sans-serif;
-  min-height: 100vh;
+  min-height: auto;
   width: 100vw;
-  padding: 48px 0; 
+padding: 24px 0; 
   position: relative;
   background-image: url('/images/fondo.jpg'); 
   background-size: cover;
@@ -107,6 +107,30 @@
 .modal-content h3 { color: #F1A81D; margin-bottom: 16px; }
 .modal-content p { color: #FFFFFF; margin-bottom: 24px; }
 
+
+/* ESTILOS PARA AFORO COMPLETADO */
+.registration-closed-column {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.center-title {
+  justify-content: center;
+}
+
+.center-title span {
+  color: var(--color-gold);
+}
+
+.closed-description {
+  margin: 0 auto;
+  color: var(--color-text-main);
+  max-width: 100%;
+}
+
 /* AJUSTES PARA MÓVIL */
 @media (max-width: 767px) {
   .coming-soon-container {
@@ -149,3 +173,4 @@
     padding: 24px;
   }
 }
+
